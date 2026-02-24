@@ -1,0 +1,26 @@
+    <div class="locateMenu" id="contextMenuID" cdkDrag cdkDragRootElement=".cdk-overlay-pane" >
+      <div class="menuBar" mat-dialog-title cdkDragHandle>Emp:&nbsp;{{employeeNumber}}
+        <div style="float: right; height: 100%;">
+          
+          <a style="vertical-align: top;" href="#" (click)="onMinMenu($event)" style=" font-weight: bold; font-size: large;color: black;">{{minIcon}}</a>&nbsp;
+          <a style="vertical-align: top;" href="#" (click)="onCloseMenu($event)" style=" font-weight: normal; font-size: large; color: black;">X</a>
+        
+        </div>
+      </div>
+      <mat-dialog-content>
+       <div [hidden]="hideContext" style="margin-left: 5%;">
+
+          <a  class="menuLink" [routerLink]="['/employeedetail', employeeID ]">Employee Detail</a><br />
+          <a  class="menuLink" [routerLink]="['/employee-add-edit', employeeID ]">Edit</a><br />
+          <a  class="menuLink" [routerLink]="['/notimplemented']">Payments</a><br />
+          <a  class="menuLink" [routerLink]="['/notimplemented']">Log Activity</a><br />
+          <a  class="menuLink" [routerLink]="['/notimplemented']">Departments</a><br />
+          <a  class="menuLink" [routerLink]="['/notimplemented']">Positions</a><br />
+          <a  class="menuLink" [routerLink]="['/notimplemented']">Deductions</a><br />
+          <a  class="menuLink" [routerLink]="['/notimplemented']">Address</a><br />
+          <a  class="menuLink" [routerLink]="['/documents', employeeID, employeeNumber]">Documents({{documentCount}})</a><br />
+          <a  class="menuLink"  routerLink="/listemployees">Employees List</a><br />
+        
+        </div>
+      </mat-dialog-content>
+    </div>

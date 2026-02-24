@@ -1,0 +1,87 @@
+
+    @let employees = (employees$ | async)!;
+    
+    @if(employees){
+    
+    <h1>Employees </h1>
+    
+    <input style="width: 250px;" (keyup.enter)="applyFilter($event)" placeholder="Search">
+
+    &nbsp; &nbsp; &nbsp; &nbsp; 
+
+    <a href="#" routerLink="/employee-add-edit">Add Employee</a>
+
+    &nbsp; &nbsp; &nbsp; &nbsp; 
+
+    <a data-tooltip="Reload" href="#" style="float:right;" (click)="refreshEmployees($event)">Refresh</a>
+      
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" matSortDisableClear>
+
+       <ng-container matColumnDef="employeenumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee Number</th>
+        <td mat-cell *matCellDef="let employee" >
+           <a (click)="highlightEmployeeID(employee.id)" data-tooltip="View Details" style="color: black; text-decoration: underline;" [routerLink]="['/employeedetail', employee.id]">{{ employee.employeeNumber }}</a>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let employee">
+          {{ employee.title ?? ""}}
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.lastName }}</td>
+      </ng-container>
+  
+      <ng-container matTooltip="status" matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let employee">{{employee.employeeStatus.status  }}</td>
+      </ng-container>  
+
+       <ng-container matColumnDef="edit">
+         <th  mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let employee">
+
+            <a href="#" (click)="employeeSelected(employee.id, employee.employeeNumber, employee.documentCount)" style="color: black;"><span style="text-decoration: underline;">Context Menu</span></a>&nbsp;&nbsp;&nbsp;
+            <a (click)="highlightEmployeeID(employee.id)" style="color: black;" [routerLink]="['/employee-add-edit', employee.id ]">Edit</a>&nbsp;|&nbsp;
+            <a (click)="highlightEmployeeID(employee.id)" style="color: black;"[routerLink]="['/documents', employee.id, employee.employeeNumber]">Docs({{employee.documentCount}})</a>&nbsp;&nbsp;
+        
+          </td>
+
+      </ng-container>
+
+        
+      <tr mat-header-row *matHeaderRowDef="columnNames" class="custom-header-row"></tr>
+      <tr [ngClass]="{'highlight': rowIndex.rowIndex === row.id}" 
+          (click)="highlight(row)"
+          mat-row *matRowDef="let row; columns: columnNames;" class="custom-table-row"></tr> 
+
+    </table>
+
+     <mat-paginator 
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20, dataSource.data.length]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons>
+     </mat-paginator>
+
+    }@else{
+    No Employees
+    }
+
+   
+
+
+    
+<!-- <app-employee-detail [id]="selectedEmployee?.employeeid" /> -->
+
+
+   

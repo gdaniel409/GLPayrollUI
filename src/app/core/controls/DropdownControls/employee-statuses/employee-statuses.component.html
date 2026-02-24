@@ -1,0 +1,26 @@
+
+<mat-form-field class="lbl-detail">
+    <mat-label>Status</mat-label>
+  <mat-select [value] = "statusID"   
+   (selectionChange)="onSelectionChange($event)" [compareWith]="compare"
+   matSelect required>
+    <mat-option value=""></mat-option>
+    <mat-option value="1">Active</mat-option>
+    <mat-option value="2">Inactive</mat-option>
+    <mat-option value="3">Pending</mat-option>
+    <mat-option value="4">Suspended</mat-option>
+    <mat-option value="5">Terminated</mat-option>
+    <mat-option value="6">On Leave</mat-option>
+       
+    </mat-select>
+    <mat-error>Status is required</mat-error>
+
+  </mat-form-field>
+
+
+ 
+
+
+
+
+ 

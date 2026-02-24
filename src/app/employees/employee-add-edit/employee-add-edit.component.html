@@ -1,0 +1,123 @@
+
+
+<div style="margin-left: 5%; width: 100%;">
+
+    @if(isAddMode){
+    <h1>Add Employee</h1>
+    }
+    @else{
+    <h1>Edit Employee</h1>
+    }
+    <br />
+
+    <span style="color: red; font-size:large;">{{ message }}</span>
+
+    <form [formGroup]="employeeFormGroup" (ngSubmit)="onSubmit()">
+      
+        <mat-form-field class="lbl-detail">
+            <mat-label>Title</mat-label>
+            <mat-select formControlName="title" matSelect required>
+                <mat-option value=""></mat-option>
+                <mat-option value="Mr">Mr</mat-option>
+                <mat-option value="Mrs">Mrs</mat-option>
+                <mat-option value="Miss">Miss</mat-option>
+                <mat-option value="Ms">Ms</mat-option>
+                <mat-option value="Dr">Dr</mat-option>
+            </mat-select>
+            <mat-error>Title is required</mat-error>
+        </mat-form-field><br />
+
+              
+        <mat-form-field class="lbl-detail">
+            <mat-label>Employee Number</mat-label>
+            <input formControlName="employeeNumber" matInput required maxlength="45"/>
+            <mat-error>Employee Number is required</mat-error>
+        </mat-form-field><br />
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstName" matInput required maxlength="45"/>
+            <mat-error>First Name is required</mat-error>
+        </mat-form-field><br />
+
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastName" matInput required maxlength="45"/>
+            <mat-error>Last Name is required</mat-error>
+        </mat-form-field><br />
+
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>Middle Name</mat-label>
+            <input formControlName="middleName" matInput maxlength="45"/>
+
+        </mat-form-field><br />
+
+         <mat-form-field class="lbl-detail">
+                <mat-label>Rate</mat-label>
+                <input formControlName="rate" matInput required />
+                <mat-error>Rate is required</mat-error>
+        </mat-form-field><br /> 
+
+        <app-pay-rate-types
+          [rateID] = "rateTypeID"
+          (selectionChange)="handleRateChangeSelection($event)">
+        </app-pay-rate-types><br />
+
+        <app-employee-statuses
+          [statusID] ="statusID" 
+          (selectionChange)="handleStatusChangeSelection($event)"> 
+        </app-employee-statuses><br />
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>Date Hired</mat-label>
+            <input formControlName="dateHired" [matDatepicker]="picker" matInput required />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Date Hired is required</mat-error>
+        </mat-form-field><br />
+        
+        <mat-form-field class="lbl-detail">
+            <mat-label>Date Terminated</mat-label>
+            <input formControlName="dateTerminated" [matDatepicker]="picker2" matInput/>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+         
+        </mat-form-field><br />
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>SSN</mat-label>
+            <input formControlName="ssn" matInput required maxlength="45"/>
+            <mat-error>SSN is required</mat-error>
+        </mat-form-field><br />
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>Telephone Landline</mat-label>
+            <input formControlName="telephoneLandline" matInput />
+            <mat-error>Telephone is required</mat-error>
+        </mat-form-field><br />
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>Telephone Cell</mat-label>
+            <input formControlName="telephoneCell" matInput  />
+            <mat-error>Telephone is required</mat-error>
+        </mat-form-field><br />
+
+        <mat-form-field class="lbl-detail">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput maxlength="45"/>
+            <mat-error>Email is required</mat-error>
+        </mat-form-field><br />
+
+        <div class="lbl-detail">
+            <button mat-raised-button type="submit" [disabled]="loading">
+                Save
+            </button><br />
+        </div>
+
+    </form>
+    <br />
+
+</div>
+

@@ -1,0 +1,36 @@
+.highlight{
+
+    background-color: lightslategray;
+    
+}
+
+/* .mat-mdc-row .mat-mdc-cell {
+      color: red; 
+} 
+*/
+
+    .mat-column-employeenumber {
+        width: 15%; /* Set a percentage of the available table width */
+    }
+
+    .mat-column-title {
+        width: 10%; /* Set a percentage of the available table width */
+    }
+
+    .mat-column-firstname {
+        width: 15%; /* Set a percentage of the available table width */
+    }
+
+    .mat-column-lastname {
+        width: 15%; /* Set a percentage of the available table width */
+    }
+
+    .mat-column-status {
+        width: 5%; /* Set a percentage of the available table width */
+    }
+
+    .mat-column-edit {
+        width: 40%; /* Set a percentage of the available table width */
+    }
+
+    

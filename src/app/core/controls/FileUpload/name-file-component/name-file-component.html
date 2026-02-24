@@ -1,0 +1,30 @@
+
+<div>
+    Give your file names an alies such as Resume, Photo, etc.<br /><br />
+</div>
+<div>
+    <label class="err-message-label">{{message}}</label><br />
+</div>
+<ul class="name-list">
+    @for (file of filesArray; track file.name){
+
+    <li>
+        <mat-label>
+            {{ file.name }}
+        </mat-label>
+    </li>
+    <li>
+        <input [id]="file.name" matInput required maxlength="45" />
+    </li>
+    }@empty {
+    <li>
+        <mat-label>
+            No Documents Found
+        </mat-label>
+    </li>
+    }
+
+</ul>
+
+<button class="button-style" (click)="processFileNames()">Upload Files</button>
+

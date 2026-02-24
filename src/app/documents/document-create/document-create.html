@@ -1,0 +1,37 @@
+<div class="page">
+  <input type="file" class="file-input" [accept]="requiredFileType" #fileUpload (change)="onFileSelected($event)"
+    multiple value="input" />
+
+  <div class="fileuploadpage">
+
+    <span class="err-message-label">{{message}}</span><br />
+
+    <div class="file-upload">
+      <div class="dragdropfiles" appDragAndDrop (filesDropped)="handleFiles($event)">
+
+        Drag and drop files here<span class="small-font"><br /><br />5 files may be multi-selectd</span>
+      </div>
+      <br />
+
+
+      <button class="button-style" (click)="fileUpload.click()" mat-mini-fab color="primary">
+
+        Select Files
+
+      </button>
+      <br /><br />
+      <div class="displayfiletypes">
+        Files that can be uploaded: jpg, jpeg, png, pdf, txt, xps, odt, tiff, rtf, epub, and md.
+      </div>
+
+    </div>
+
+    <div class="filenames">
+      <app-name-file-component [filesArray]="filesArray" (fileNamesChanges)="processFiles($event)"
+        [hidden]="hideNames"></app-name-file-component>
+
+    </div>
+
+  </div>
+
+</div>

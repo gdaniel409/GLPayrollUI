@@ -1,0 +1,50 @@
+.file-input {
+  display: none;
+  
+}
+.file-upload{
+
+  padding: 0 0 0 0;
+  float: left;
+  width: 15%;
+
+}
+.upload-btn{
+
+  background-color: blue;
+  color: white;
+
+}
+
+.dragdropfiles{
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 6px;
+  border: 1px solid black; 
+   text-align: center; 
+  
+}
+
+.displayfiletypes{
+
+  width: 100px;
+  text-align: center; 
+  
+}
+
+.filenames{
+  float:left;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+ 
+}
+.fileuploadpage{
+
+  margin-top: 15px;
+}
+
+.small-font{
+  font-size:smaller;
+}

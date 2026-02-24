@@ -1,0 +1,35 @@
+.locateMenu
+{
+   
+    position: absolute!important;
+    left: 100px;
+    top: 100px;
+    width: 20%; 
+    color: black; 
+  
+    background-color: rgb(225, 230, 237);
+    border-radius: 10px;
+    
+}
+.menuBar
+{
+    cursor:move; 
+    color: Black!important; 
+    background-color: lightgrey;
+    height: 40px;
+    width: 100%;
+    font-size:medium;
+    text-align: center;
+    vertical-align: top;
+    border-radius: 10px;
+    
+}
+
+.menuLink
+{
+    color:black;
+}
+
+.menuLink:hover {
+  color: #FF0000; /* Replace #FF0000 with your desired color code or name */
+}

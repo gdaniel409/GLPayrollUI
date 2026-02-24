@@ -1,0 +1,63 @@
+ 
+@let documents = (documents$  | async)!;
+
+@if(documents){
+
+     <h1>Documents</h1>
+
+     Employee:&nbsp;&nbsp; <a data-tooltip="View Employee Details" style="color: black; text-decoration: underline;" [routerLink]="['/employeedetail', employeeId]">{{ employeeNumber }}</a>
+    <br /><br />
+
+     <a href="#" [routerLink]="['/documentsadd', employeeId, employeeNumber]">Add Documents</a><br />
+   
+    <table mat-table [dataSource]="documents">
+
+        <ng-container matColumnDef="alias">
+            <th mat-header-cell *matHeaderCellDef>Alias</th>
+            <td mat-cell *matCellDef="let document">
+            {{ document.alias }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="originalFileName">
+            <th mat-header-cell *matHeaderCellDef>Orig Name</th>
+            <td mat-cell *matCellDef="let document">
+            {{ document.originalFileName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateCreated">
+            <th mat-header-cell *matHeaderCellDef>Created</th>
+            <td mat-cell *matCellDef="let document">
+            {{ document.dateCreated }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+         <th  mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let document">
+
+            <!-- <a style="color: black;" [routerLink]="['/viewdocument', document.id, true, document.mimeType, employeeId, employeeNumber]">View</a>&nbsp;|&nbsp; -->
+
+            <a (click)="viewDocumentInNewTab(document)" style="color: black; cursor: pointer;">View</a>&nbsp;|&nbsp;
+            <a style="color: black;" [routerLink]="['/notimplemented']">Edit</a>&nbsp;|&nbsp;
+            <a style="color: black;" [routerLink]="['/notimplemented']">Delete</a>&nbsp;|&nbsp;
+                     
+          </td>
+
+      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnNames" class="custom-header-row"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnNames;" class="custom-table-row"></tr>
+
+
+    </table>
+
+
+}
+@else{
+    No Documents.
+}
+   
+   
+

@@ -1,0 +1,55 @@
+
+@let employee=(employee$ | async)!;
+<div class="inner-margin">
+
+<h1>Employee Detail</h1>
+
+<mat-label class="lbl-detail">Employee Number</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.employeeNumber}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Employee Name</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.title + ' ' + employee.firstName + ' ' + employee.lastName}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Rate</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.rate}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Rate Description</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.rateType.description}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Status</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.employeeStatus.status}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Email</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.email}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Telephone Landline</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.telephoneLandline}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Telephone Cell</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.telephoneCell}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">SSN (Last 4)</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.ssn}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Date Hired</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.dateHired | date:'MM/dd/yyyy'}}</mat-label>
+<br /><br />
+
+<mat-label class="lbl-detail">Date Terminated</mat-label><br />
+<mat-label class="lbl-detail-value">{{employee.dateTerminated | date:'MM/dd/yyyy'}}</mat-label>
+<br /><br />
+
+</div>
+
+
+
+

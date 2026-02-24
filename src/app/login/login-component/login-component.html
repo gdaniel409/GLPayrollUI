@@ -1,0 +1,33 @@
+
+<br />
+<br />
+<div [hidden]="isLoginHidden">
+  
+<form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+  <!-- Email Input -->
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput placeholder="Enter your username" type="text" name="username" ngModel required>
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+  <br />
+
+  <!-- Password Input -->
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Enter your password" type="password" name="password" ngModel required>
+    <mat-icon matSuffix>lock</mat-icon>
+  </mat-form-field>
+  <br />
+
+  <!-- Login Button -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
+    Login
+  </button>
+</form>
+
+</div>
+<div [hidden]="!isLoginHidden">
+  <h2>Welcome to the Dashboard!</h2>
+  <p>You have successfully logged in.</p>
+

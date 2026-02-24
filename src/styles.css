@@ -1,0 +1,153 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.inner-margin{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+a {
+    position: relative; /* Essential for positioning the tooltip relative to the anchor */
+    text-decoration: none;
+    color: #007bff;
+   
+}
+
+.page{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+a[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 120%; /* Position the tooltip above the anchor */
+    left: 50%;
+    transform: translateX(-50%); /* Center the tooltip horizontally */
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+a[data-tooltip]::after {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+a[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+    height: 40px;
+    
+}
+
+.lbl-detail{
+
+    font-weight: bold; 
+    width: 40%;
+  
+}
+
+.lbl-detail-value{
+
+    width: 40%;
+
+}
+
+.lbl-detail-description{
+
+    height: 225px; 
+    overflow: auto;
+    width: 40%;
+    border-style: solid; 
+    border-width: 1px; 
+    border-color: black; 
+    border-radius: 4px;
+  
+}
+
+.inner-txt-area{
+    width: 100%;
+    height: 250px;
+}
+
+.background-fill{
+
+    vertical-align:middle;
+    border-radius: 8px;
+    color: black; 
+    background-color: lightgray; 
+    width: 40%; 
+    height: 60px;
+}
+
+
+/* For odd rows (1st, 3rd, 5th, etc.) */
+.mat-mdc-row:nth-child(odd) {
+  background-color: #f0f0f0; /* Light gray */
+  color: black; 
+  font-size: medium;
+}
+
+/* For even rows (2nd, 4th, 6th, etc.)
+.mat-mdc-row:nth-child(even) {
+  background-color: #e0e0e0; /* Slightly darker gray 
+}
+
+ */
+
+.mat-mdc-row:nth-child(even) {
+  background-color: #c2bbda; /* Slightly darker gray */
+  color: black; 
+  font-size: medium;
+}
+
+.button-style{
+    width: 125px;
+}
+
+
+
+
+/* .mat-mdc-row:nth-child(even) .mat-mdc-cell {
+  color: white; /* Example: Darker text for even rows 
+} */
+
+.custom-table-row {
+      height: 30px !important; /* Adjust as needed */
+}
+
+.custom-header-row {
+      height: 30px !important; /* Adjust as needed for header */
+}
+
+.mat-mdc-header-row th {
+    background-color: black !important; 
+    color: white !important;
+    font-size: medium !important;
+    font-weight: bold !important;
+  
+   border-style: ridge;
+   border-color: black;
+   height: 60px;
+
+   
+   
+}
+
+.err-message-label{
+  margin-top: 0;
+  margin-left: 0;
+
+  color: red;
+}
