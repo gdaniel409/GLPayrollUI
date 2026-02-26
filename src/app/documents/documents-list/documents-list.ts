@@ -6,9 +6,7 @@ import { Observable, of, switchMap } from 'rxjs';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { APP_SETTINGS } from '../../app.settings';
 import { DocumentsHttpService } from '../../core/services/documents/documents-service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-documents-list',

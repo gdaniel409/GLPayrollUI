@@ -1,15 +1,6 @@
-/*
-  This is a payroll application developed by Gordon Daniel demonstrating how a payroll
-  application might work.  It is covered under the MIT license.
-  
-
-  
-*/
-
 
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { EmployeeModel} from '../../models/EmployeeModel';
-
 import { Observable, of, switchMap } from 'rxjs';
 import { AsyncPipe , CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';

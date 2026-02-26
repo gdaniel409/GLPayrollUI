@@ -1,10 +1,4 @@
-/*
-  This is a payroll application developed by Gordon Daniel demonstrating how a payroll
-  application might work.  It is covered under the MIT license.
-  
 
-  
-*/
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators,  ReactiveFormsModule} from '@angular/forms';

@@ -1,10 +1,4 @@
-/*
-  This is a payroll application developed by Gordon Daniel demonstrating how a payroll
-  application might work.  It is covered under the MIT license.
-  
 
-  
-*/
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ContextMenuComponent } from "./navigation/context-menu-component/context-menu-component";
 import { ContextMenuService } from './core/services/contextmenuservice/ContextMenuService';

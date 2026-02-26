@@ -1,10 +1,4 @@
-/*
-  This is a payroll application developed by Gordon Daniel demonstrating how a payroll
-  application might work.  It is covered under the MIT license.
-  
 
-  
-*/
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatLabel } from '@angular/material/input';
