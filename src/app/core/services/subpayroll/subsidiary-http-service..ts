@@ -7,7 +7,7 @@
 */
 import { HttpClient, HttpErrorResponse, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { IID } from '../../../models/IID';
 import { IHttp } from '../../../models/IHttp';
 import { APP_SETTINGS } from '../../../app.settings';
@@ -36,12 +36,11 @@ export abstract class SubsidiaryHttpService<model extends IID> implements IHttp<
         const urlAddr : string = this.appSettings.getString(this.apiString + "list");
  
         return this.http.get<model[]>(urlAddr).pipe(
-              map(data => {
+              tap(data => {
     
               this.list = data;
               this.downloaded = true;
-              return data;
-    
+             
             }),
             catchError(this.handleError)
           );
@@ -54,28 +53,21 @@ export abstract class SubsidiaryHttpService<model extends IID> implements IHttp<
   getItem(id: number): Observable<model> | undefined{
 
     if(this.downloaded)
-        {
+    {
            const foundItem  = this.list.find(item=>item.id === id);
            return of(foundItem!);
     
-        }
+    }
     else{
-    
-          const urlAddr : string = this.appSettings.getString(this.apiString + "list");
-    
-          return this.http.get<model[]>(urlAddr).pipe(
-            map(data=>{
-    
-              this.list = data;
-              this.downloaded = true;
-    
+      return this.getList().pipe(
+            map(data => {
               const foundItem  = data.find(item=>item.id === id);
               return foundItem!;
-            }), catchError(this.handleError)
-          )
+            }),
+            catchError(this.handleError)
+      );
     
-         }
-
+    }
   }
 
   addItem(newItem: model): Observable<model> {

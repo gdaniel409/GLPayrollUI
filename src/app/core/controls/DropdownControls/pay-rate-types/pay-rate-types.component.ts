@@ -1,38 +1,47 @@
-/*
-  This is a payroll application developed by Gordon Daniel demonstrating how a payroll
-  application might work.  It is covered under the MIT license.
-  
 
-  
-*/
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatError, MatFormField, MatLabel, MatOption, MatSelect, MatSelectChange } from '@angular/material/select';
-
+import { RateTypeService } from '../../../services/ratetype/rate-type';
+import { RateTypeModel } from '../../../../models/RateTypeModel';
+import { Observable } from 'rxjs';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pay-rate-types',
   imports: [
-     MatSelect,
+    MatSelect,
     MatFormField,
     MatLabel,
     MatOption,
     MatError,
+    AsyncPipe,
+    CommonModule,
     
-  ],
+],
   templateUrl: './pay-rate-types.component.html',
   styleUrl: './pay-rate-types.component.css'
 })
-export class PayRateTypesComponent {
+export class PayRateTypesComponent implements OnInit {
 
-  @Input() rateID: number | undefined; 
+  @Input() rateId: number | undefined; 
   @Output() selectionChange = new EventEmitter<MatSelectChange>(); // Event for selection changes
 
+  rateTypes$ : Observable<RateTypeModel[]> | undefined = undefined;
+  
   onSelectionChange(event: MatSelectChange): void {
     this.selectionChange.emit(event.value);
   }
 
-  constructor()
-  {}
+  constructor(private readonly ratetypeservice: RateTypeService)
+  {
+    
+  }
+
+  ngOnInit(): void {
+    
+    this.rateTypes$ = this.ratetypeservice.initializeLookupData();
+   
+  }
 
   compare(object1: any, object2: any) {
     return object1 && object2 && object1.toString() == object2.toString()

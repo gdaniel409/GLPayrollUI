@@ -59,7 +59,7 @@ export const appSettings : IAppSettings={
   createemployee: 'api/employees/create',
   updateemployee: 'api/employees/edit',
   employeeStatuses: 'api/employees/employeestatus',
-  employeestatuslist: 'api/employees/employeestatus',
+  employeestatuslist: 'api/admin/employeestatus/list',
   documentUpload: 'api/documents/postdocument',
   documentList: 'api/documents/list',
   documentDownload: 'api/documents/downloaddocument',
@@ -69,6 +69,8 @@ export const appSettings : IAppSettings={
 
     switch (value.toLowerCase()) {
 
+
+     
       case 'uploadfile':
         return this.hostSubApi + this.documentUpload;
 
@@ -108,6 +110,11 @@ export const appSettings : IAppSettings={
 
         return this.hostSubApi + this.documentList;
 
+      case "ratetypelist":
+        return this.hostSubApi + "api/admin/ratetype/list";
+
+      case "employeestatustypeslist":
+        return this.hostSubApi + "api/admin/employeestatus/list";
 
       default:
         return "";

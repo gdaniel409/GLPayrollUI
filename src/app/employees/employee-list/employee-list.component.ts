@@ -45,14 +45,16 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
   pageSize : number = 5;
   list: EmployeeModel[]=[];
 
-
   constructor(private readonly route: ActivatedRoute, 
     private readonly http : EmployeePayrollHttpService,
-    public rowIndex: RowSelectorService, 
-    private readonly contextMenuService : ContextMenuService
+    public readonly rowIndex: RowSelectorService, 
+    private readonly contextMenuService : ContextMenuService,
+    
     
   )
-  {}
+  {
+  
+  }
  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

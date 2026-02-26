@@ -1,12 +1,11 @@
-/*
-  This is a payroll application developed by Gordon Daniel demonstrating how a payroll
-  application might work.  It is covered under the MIT license.
-  
 
-  
-*/
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatError, MatFormField, MatLabel, MatOption, MatSelect } from '@angular/material/select';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatError, MatFormField, MatLabel, MatOption, MatSelect, MatSelectChange } from '@angular/material/select';
+import { EmployeeStatusService } from '../../../services/employeestatus/employee-status';
+import { EmployeeStatusModel } from '../../../../models/EmployeeStatusModel';
+import { Observable} from 'rxjs';
+import { AsyncPipe, CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-employee-statuses',
@@ -16,23 +15,34 @@ import { MatError, MatFormField, MatLabel, MatOption, MatSelect } from '@angular
     MatLabel,
     MatOption,
     MatError,
+    AsyncPipe,
+    CommonModule
     
   ],
   templateUrl: './employee-statuses.component.html',
   styleUrl: './employee-statuses.component.css'
 })
-export class EmployeeStatusesComponent{
+export class EmployeeStatusesComponent implements OnInit {
 
-  @Input() statusID: number | undefined; 
+  @Input() statusId: number | undefined; 
   @Output() selectionChange = new EventEmitter<any>(); // Event for selection changes
 
-  onSelectionChange(event: any): void {
+  employeeStatuses$: Observable<EmployeeStatusModel[]> | undefined = undefined;
+
+  onSelectionChange(event: MatSelectChange): void {
     this.selectionChange.emit(event.value);
+    
   }
 
-  constructor()
-  {}
+  constructor(private readonly employeeStatusService: EmployeeStatusService)
+  {}    
+  
+  ngOnInit(): void {
 
+    this.employeeStatuses$ = this.employeeStatusService.initializeLookupData();
+
+  }
+ 
   compare(object1: any, object2: any) {
     return object1 && object2 && object1.toString() == object2.toString()
   }

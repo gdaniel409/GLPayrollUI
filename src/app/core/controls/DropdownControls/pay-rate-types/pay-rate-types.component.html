@@ -1,14 +1,28 @@
+@let rateTypes = rateTypes$ | async;
+
  <mat-form-field class="lbl-detail">
     <mat-label>Rate Type</mat-label>
-    <mat-select [value] = "rateID"  
+    <mat-select [value] = "rateId"  
     (selectionChange)="onSelectionChange($event)" [compareWith]="compare"
     matSelect required>
-        <mat-option value=""></mat-option>
-        <mat-option value="1">Hourly</mat-option>
-        <mat-option value="2">Salary</mat-option>
-        <mat-option value="3">Contract</mat-option>
-        <mat-option value="4">Commission</mat-option>
-    </mat-select>
+
+      @if(rateTypes) {
+
+        @for(item of rateTypes; track item.id){
+
+          <mat-option [value]="item.id">
+            {{ item.rateType }}
+          </mat-option>
+
+        }
+
+      }
+
+      @if (!rateTypes) {
+          <mat-option>Loading...</mat-option>
+      }
+ 
+     </mat-select>
     <mat-error>Rate type is required</mat-error>
 
 </mat-form-field>

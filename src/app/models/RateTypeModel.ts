@@ -9,6 +9,6 @@ import { IID } from "./IID";
 
 export interface RateTypeModel extends IID{
 
-  description : string | undefined;
+   rateType : string | undefined;
 
 }

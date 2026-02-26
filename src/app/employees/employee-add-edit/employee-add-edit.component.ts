@@ -50,8 +50,8 @@ export class EmployeeAddEditComponent implements OnInit {
 
   employeeFormGroup!: FormGroup;
   employeeID: number | undefined;
-  statusID : number | undefined;
-  rateTypeID : number | undefined;
+  statusId : number | undefined;
+  rateTypeId : number | undefined;
   isAddMode: boolean = false;
   loading = false;
   submitted = false;
@@ -68,7 +68,9 @@ export class EmployeeAddEditComponent implements OnInit {
     private readonly rateType : RateTypeService,
  
   ) 
-  {}
+  {
+    
+  }
   
   ngOnInit() {
     
@@ -76,7 +78,7 @@ export class EmployeeAddEditComponent implements OnInit {
    
   this.isAddMode = !this.employeeID;
     
-    this.employeeFormGroup = this.formBuilder.group({
+  this.employeeFormGroup = this.formBuilder.group({
       
         title: ['', Validators.required],
         employeeNumber: ['', Validators.required],
@@ -91,23 +93,21 @@ export class EmployeeAddEditComponent implements OnInit {
         telephoneCell: [''],
         employeeID: [-1], 
         rate : ['', Validators.required],
-    
-   
-    
+      
     });
 
     this.employeeFormGroup.reset();
 
     if (this.isAddMode) {
-      this.statusID = 1;
+      this.statusId = 1;
     }
     else{
      this.httpEmployeeService.getItem(this.employeeID)!.subscribe({
         next: (value)=>{
 
           this.employeeFormGroup.patchValue(value);
-          this.statusID = value.employeeStatus.id;
-          this.rateTypeID = value.rateType.id;
+          this.statusId = value.employeeStatus.id;
+          this.rateTypeId = value.rateType.id;
           this.documentCount = value.documentCount;
         
         }
@@ -160,8 +160,8 @@ export class EmployeeAddEditComponent implements OnInit {
       telephoneCell: this.employeeFormGroup.value.telephoneCell,
       email: this.employeeFormGroup.value.email,
       rate: this.employeeFormGroup.value.rate,
-      employeeStatus: this.employeeStatus.createEmployeeStatus(Number(this.statusID!)),
-      rateType: this.rateType.createRateType(Number(this.rateTypeID!)),
+      employeeStatus: this.employeeStatus.getEmployeeStatus(Number(this.statusId!)),
+      rateType: this.rateType.getRateType(Number(this.rateTypeId!)),
       id: -1,
       documentCount: 0,
     }
@@ -201,8 +201,8 @@ export class EmployeeAddEditComponent implements OnInit {
       id: this.employeeID ?? -1,
       
       rate : this.employeeFormGroup.value.rate,
-      employeeStatus: this.employeeStatus.createEmployeeStatus(Number(this.statusID!)),
-      rateType: this.rateType.createRateType(Number(this.rateTypeID!)),
+      employeeStatus: this.employeeStatus.getEmployeeStatus(Number(this.statusId!)),
+      rateType: this.rateType.getRateType(Number(this.rateTypeId!)),
       documentCount: 0,
      
     }
@@ -223,11 +223,11 @@ export class EmployeeAddEditComponent implements OnInit {
   }
 
   handleStatusChangeSelection($event: any) {
-    this.statusID = $event;
+    this.statusId = Number($event);
   }
 
-  handleRateChangeSelection($event: MatSelectChange) {
-    this.rateTypeID = Number($event);
+  handleRateChangeSelection($event: any) {
+    this.rateTypeId = Number($event);
   }
 
 

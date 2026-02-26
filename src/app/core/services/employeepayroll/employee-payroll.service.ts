@@ -6,7 +6,7 @@
   
 */
 import { Injectable } from '@angular/core';
-import {catchError, map, Observable } from 'rxjs';
+import {catchError, map, Observable, tap } from 'rxjs';
 import { EmployeeModel} from '../../../models/EmployeeModel';
 import { SubsidiaryHttpService } from '../subpayroll/subsidiary-http-service.';
 
