@@ -4,4 +4,4 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 This is a payroll frontend demo built usinjg Angular with Spring Boot MVC API on the backend. It demonstrates JWT and role based security.  
 
-The app can be seen at https://www.audiosl.com/glpayroll/home
+The app can be seen at https://www.audiosl.com/glpayroll
